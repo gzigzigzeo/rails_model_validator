@@ -23,16 +23,18 @@ Or install it yourself as:
 The following piece of code:
 
 ```ruby
-validate :subject_essential_attributes_present,   on: :update, if: :move_to_open_status?
-validate :essential_attributes_present,           on: :update, if: :move_to_open_status?
-validate :reviewed_attributes_present,            on: :update, if: :move_to_review_required_status?
-validate :creator_email_present, on: :update,                  if: :closing?
+class User < ApplicationRecord
+  validate :subject_essential_attributes_present,   on: :update, if: :move_to_open_status?
+  validate :essential_attributes_present,           on: :update, if: :move_to_open_status?
+  validate :reviewed_attributes_present,            on: :update, if: :move_to_review_required_status?
+  validate :creator_email_present, on: :update,                  if: :closing?
 
-# ... 15+ lines
+  # ... 15+ lines
 
-def subject_essential_attributes_present
-  errors.add(:name, :invalid) if name.to_s.blank?
-  # ... 20+ lines
+  def subject_essential_attributes_present
+    errors.add(:name, :invalid) if name.to_s.blank?
+    # ... 20+ lines
+  end
 end
 ```
 
@@ -54,6 +56,10 @@ class SubjectEssentialAttributesValidator < RailsModelValidator
   def validate_there_are_not_too_much_images
     errors.add(:images, :too_many) if subject.images.count > 10
   end
+end
+
+class User < ApplicationRecord
+  validate { SubjectEssentialAttributesValidator.validate(self) }
 end
 ```
 
