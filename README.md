@@ -57,7 +57,9 @@ class SubjectEssentialAttributesValidator < RailsModelValidator
 end
 ```
 
-Rails [custom validators](https://guides.rubyonrails.org/active_record_validations.html#custom-validators) are little more verbose.
+Rails [custom validators](https://guides.rubyonrails.org/active_record_validations.html#custom-validators) are the way to go as well, but they tend to be little more verbose.
+
+If you have _really_ complex validations, check: [tram-policy](https://github.com/tram-rb/tram-policy).
 
 Base class also provides `#create?` and `#update?` methods which will work in ActiveRecord context.
 
