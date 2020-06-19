@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Viktor Sokolov"]
   spec.email         = ["gzigzigzeo@gmail.com"]
 
-  spec.summary       = %q{ActiveRecord model validations in separate class}
-  spec.description   = %q{ActiveRecord model validations in separate class}
+  spec.summary       = %q{Pattern of extraction ActiveRecord model validations into separate class}
+  spec.description   = %q{Pattern of extraction ActiveRecord model validations into separate class}
   spec.homepage      = "https://github.com/gzigzigzeo/rails_model_validator"
   spec.license       = "MIT"
 
